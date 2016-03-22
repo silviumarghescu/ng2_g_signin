@@ -2,6 +2,8 @@
 
 Google sign-in component for Angular2 Dart.
 
+#### [The working example site](https://ng2-g-signin-site.appspot.com/)
+
 #### Moved from [https://github.com/ntaoo/angular2_google_signin](https://github.com/ntaoo/angular2_google_signin)
 
 This package consists of
@@ -10,7 +12,7 @@ This package consists of
  * Angular2 component to wrap the interop code.
 
 For more information about Google Sign-In JavaScript client, See
-https://developers.google.com/identity/sign-in/web/sign-in
+[https://developers.google.com/identity/sign-in/web/sign-in](https://developers.google.com/identity/sign-in/web/sign-in)
 
 ## Usage
 
@@ -64,8 +66,6 @@ In a ng2 component template, put `<g-signin>` with attributes of render options 
 <g-signin clientId="..." width="240" theme="dark" scope="email profile" longTitle="true"
                  (googleSigninSuccess)="onGgoogleSigninSuccess($event)"></g-signin>
 ```
-
-Also see `example/`.
 
 ## Features and bugs
 
