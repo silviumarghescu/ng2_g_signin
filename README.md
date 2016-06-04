@@ -2,7 +2,7 @@
 
 Google sign-in component for Angular2 Dart.
 
-#### [The working example site](https://ng2-g-signin-site.appspot.com/)
+#### [The example site](https://ng2-g-signin-site.appspot.com/)
 
 #### Moved from [https://github.com/ntaoo/angular2_google_signin](https://github.com/ntaoo/angular2_google_signin)
 
