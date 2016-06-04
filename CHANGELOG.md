@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.2.0+3
+- Clean up README.
+
 ## 0.2.0+2
 - Enable strong-mode analysis.
 - Move example site code to e2e_example/.
