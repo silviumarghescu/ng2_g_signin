@@ -1,0 +1,20 @@
+application: ng2-g-signin-site
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+- url: /packages
+  static_dir: static/web/packages
+  secure: always
+
+- url: /(.*\.(js|json|gif|png|jpg))$
+  static_files: static/web/\1
+  upload: static/web/.*\.(js|json|gif|png|jpg)$
+
+- url: /.*
+  static_files: static/web/index.html
+  upload: static/web/index.html
+  secure: always
+
