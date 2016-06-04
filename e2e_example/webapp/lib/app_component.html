@@ -1,0 +1,11 @@
+<h1>A working example site of google sign-in</h1>
+<h3>With <a href="https://pub.dartlang.org/packages/ng2_g_signin">ng2_g_signin component</a>
+  for Angular2 Dart</h3>
+<g-signin clientId="484793393317-n9pfr2ffuni9vgldk7bt086pecsq003q.apps.googleusercontent.com" width="240"
+          theme="dark" longTitle="true" fetchBasicProfile="true"
+          (googleSigninSuccess)="onGoogleSigninSuccess($event)"></g-signin>
+
+<div>id : {{id}}</div>
+<div>name : {{name}}</div>
+<div>imageUrl : {{imageUrl}}</div>
+<div>email : {{email}}</div>
