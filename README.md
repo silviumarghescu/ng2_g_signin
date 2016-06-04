@@ -1,27 +1,25 @@
 # ng2_g_signin
 
-Google sign-in component for Angular2 Dart.
-
-#### [The example site](https://ng2-g-signin-site.appspot.com/)
-
-#### Moved from [https://github.com/ntaoo/angular2_google_signin](https://github.com/ntaoo/angular2_google_signin)
+Google sign-in component for Angular2.
 
 This package consists of
 
  * The dart interop code of Google Sign-In JavaScript client (using package:js).
  * Angular2 component to wrap the interop code.
 
-For more information about Google Sign-In JavaScript client, See
-[https://developers.google.com/identity/sign-in/web/sign-in](https://developers.google.com/identity/sign-in/web/sign-in)
+## Example site
+
+[https://ng2-g-signin-site.appspot.com/](https://ng2-g-signin-site.appspot.com/)
 
 ## Usage
 
 Add this script tag below in the head tag of web/index.html
+
 ```html
-<script src="https://apis.google.com/js/platform.js" defer></script>
+<script defer src="https://apis.google.com/js/platform.js"></script>
 ```
 
-Import this in a ng2 component and add `GSignin` on the directives.
+Import this in a component and add `GSignin` on the directives.
 
 ```dart
 import 'package:ng2_g_signin/ng2_g_signin.dart';
@@ -60,12 +58,20 @@ class AppComponent {
 }
 ```
 
-In a ng2 component template, put `<g-signin>` with attributes of render options and init params.
-`clientId` attribute is required. You don't need to write `google-signin-client_id` meta tag.
+In a component template, put `<g-signin>` with attributes of render options and init params.
+`clientId` attribute is **required**. You don't need to write `google-signin-client_id` meta tag.
 ```html
-<g-signin clientId="..." width="240" theme="dark" scope="email profile" longTitle="true"
-                 (googleSigninSuccess)="onGgoogleSigninSuccess($event)"></g-signin>
+<g-signin
+  clientId="..."
+  width="240"
+  theme="dark"
+  scope="email profile"
+  longTitle="true"
+  (googleSigninSuccess)="onGgoogleSigninSuccess($event)">
+</g-signin>
 ```
+
+For more information about Google Sign-In JavaScript client, See [https://developers.google.com/identity/sign-in/web/sign-in](https://developers.google.com/identity/sign-in/web/sign-in)
 
 ## Features and bugs
 
