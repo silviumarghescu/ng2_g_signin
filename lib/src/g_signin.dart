@@ -6,6 +6,10 @@ import 'google_signin_js/gapi.dart';
 import 'google_signin_js/gapi/auth2.dart';
 import 'google_signin_js/gapi/signin2.dart';
 
+class ClientIdNotFoundError extends StateError {
+  ClientIdNotFoundError(String message) : super(message);
+}
+
 @Component(
     selector: 'g-signin',
     template: '<div [id]="id"></div>',
@@ -52,7 +56,8 @@ class GSignin implements AfterViewInit {
 
   _auth2Init() {
     if (clientId == null)
-      throw ('clientId property is necessary (<google-signin clientId="..."></google-signin>).');
+      throw new ClientIdNotFoundError(
+          'clientId property is necessary. (<google-signin clientId="..."></google-signin>)');
 
     load('auth2', allowInterop(() {
       init(new Params(
