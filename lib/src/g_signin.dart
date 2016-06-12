@@ -9,7 +9,7 @@ import 'google_signin_js/gapi/signin2.dart';
 @Component(
     selector: 'g-signin',
     template: '<div [id]="id"></div>',
-    changeDetection: ChangeDetectionStrategy.CheckOnce)
+    changeDetection: ChangeDetectionStrategy.OnPush)
 class GSignin implements AfterViewInit {
   final String id = 'google-signin2';
 
