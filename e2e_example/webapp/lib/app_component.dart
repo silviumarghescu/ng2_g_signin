@@ -44,4 +44,8 @@ class AppComponent {
     this.imageUrl = profile.getImageUrl();
     this.email = profile.getEmail();
   }
+
+  signOut() {
+    getAuthInstance().signOut();
+  }
 }
