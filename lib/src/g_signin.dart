@@ -111,7 +111,7 @@ class GSignin implements AfterViewInit {
     if (boolString == 'true') return true;
     if (boolString == 'false') return false;
     if (boolString == null) return null;
-    throw ('true, false, or null are expected.');
+    throw new ArgumentError('Only true, false, and null are valid.');
   }
 
   _renderButton() {
