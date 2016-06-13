@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.0
+- **Breaking** Rename GSignin to GoogleSignin.
+- Change to ChangeDetectionStrategy.OnPush.
+- Add sign out example.
+- Clean up the e2e example.
+- Internal code clean up.
+
 ## 0.2.0+3
 - Clean up README.
 

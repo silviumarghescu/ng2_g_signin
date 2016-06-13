@@ -19,7 +19,7 @@ Add this script tag below in the head tag of web/index.html
 <script defer src="https://apis.google.com/js/platform.js"></script>
 ```
 
-Import this in a component and add `GSignin` on the directives.
+Import this in a component and add `GoogleSignin` on the directives.
 
 ```dart
 import 'package:ng2_g_signin/ng2_g_signin.dart';
@@ -27,11 +27,11 @@ import 'package:ng2_g_signin/ng2_g_signin.dart';
 @Component(
     selector: 'app-component',
     templateUrl: 'template/app_component.html',
-    directives: const [GSignin]
+    directives: const [GoogleSignin]
 )
 class AppComponent {
 
-  onGoogleSigninSuccess(GoogleSignInSuccess event) async {
+  onGoogleSigninSuccess(GoogleSignInSuccess event) {
     GoogleUser googleUser = event.googleUser;
     String id = googleUser.getId();
     assert(googleUser.isSignedIn());
@@ -52,23 +52,21 @@ class AppComponent {
     GoogleAuth auth =  getAuthInstance();
     GoogleUser user = auth.currentUser.get();
     assert(user.hashCode == googleUser.hashCode);
-    await auth.signOut();
-    print('User signed out.');
   }
 }
 ```
 
-In a component template, put `<g-signin>` with attributes of render options and init params.
+In a component template, put `<google-signin>` with attributes of render options and init params.
 `clientId` attribute is **required**. You don't need to write `google-signin-client_id` meta tag.
 ```html
-<g-signin
+<google-signin
   clientId="..."
   width="240"
   theme="dark"
   scope="email profile"
   longTitle="true"
   (googleSigninSuccess)="onGgoogleSigninSuccess($event)">
-</g-signin>
+</google-signin>
 ```
 
 For more information about Google Sign-In JavaScript client, See [https://developers.google.com/identity/sign-in/web/sign-in](https://developers.google.com/identity/sign-in/web/sign-in)
