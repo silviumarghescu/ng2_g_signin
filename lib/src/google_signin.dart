@@ -11,10 +11,10 @@ class ClientIdNotFoundError extends StateError {
 }
 
 @Component(
-    selector: 'g-signin',
+    selector: 'google-signin',
     template: '<div [id]="id"></div>',
     changeDetection: ChangeDetectionStrategy.OnPush)
-class GSignin implements AfterViewInit {
+class GoogleSignin implements AfterViewInit {
   final String id = 'google-signin2';
 
   // Render options
