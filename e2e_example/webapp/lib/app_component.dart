@@ -10,12 +10,13 @@ import 'package:ng2_g_signin/ng2_g_signin.dart';
     templateUrl: 'app_component.html',
     directives: const [GoogleSignin])
 class AppComponent {
+  bool isSignedIn = false;
   String id;
   String name;
   String imageUrl;
   String email;
 
-  onGoogleSigninSuccess(GoogleSignInSuccess event) async {
+  void onGoogleSigninSuccess(GoogleSignInSuccess event) {
     GoogleUser googleUser = event.googleUser;
     String id = googleUser.getId();
     assert(googleUser.isSignedIn());
@@ -43,9 +44,11 @@ class AppComponent {
     this.name = profile.getName();
     this.imageUrl = profile.getImageUrl();
     this.email = profile.getEmail();
+    isSignedIn = googleUser.isSignedIn();
   }
 
-  signOut() {
+  void signOut() {
     getAuthInstance().signOut();
+    isSignedIn = false;
   }
 }
