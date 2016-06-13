@@ -6,5 +6,5 @@
 library ng2_g_signin;
 
 export 'src/events.dart';
-export 'src/g_signin.dart';
+export 'src/google_signin.dart';
 export 'src/google_signin_js/gapi/auth2.dart' hide init, Params;

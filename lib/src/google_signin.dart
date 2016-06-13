@@ -6,22 +6,48 @@ import 'google_signin_js/gapi.dart';
 import 'google_signin_js/gapi/auth2.dart';
 import 'google_signin_js/gapi/signin2.dart';
 
+class ClientIdNotFoundError extends StateError {
+  ClientIdNotFoundError(String message) : super(message);
+}
+
 @Component(
-    selector: 'g-signin',
+    selector: 'google-signin',
     template: '<div [id]="id"></div>',
-    changeDetection: ChangeDetectionStrategy.CheckOnce)
-class GSignin implements AfterViewInit {
+    changeDetection: ChangeDetectionStrategy.OnPush)
+class GoogleSignin implements AfterViewInit {
   final String id = 'google-signin2';
 
   // Render options
   @Input()
   String scope;
+
+  String get width => _width.toString();
+
   @Input()
-  String width;
+  void set width(String s) {
+    _width = s == null ? null : int.parse(s);
+  }
+
+  int _width;
+
+  String get height => _height.toString();
+
   @Input()
-  String height;
+  void set height(String s) {
+    _width = s == null ? null : int.parse(s);
+  }
+
+  int _height;
+
+  String get longTitle => _longTitle.toString();
+
   @Input()
-  String longTitle;
+  void set longTitle(String s) {
+    _longTitle = _nullableParseBool(s);
+  }
+
+  bool _longTitle;
+
   @Input()
   String theme;
 
@@ -30,8 +56,16 @@ class GSignin implements AfterViewInit {
   String clientId;
   @Input()
   String cookiePolicy;
+
+  String get fetchBasicProfile => _fetchBasicProfile.toString();
+
   @Input()
-  String fetchBasicProfile;
+  void set fetchBasicProfile(String s) {
+    _fetchBasicProfile = _nullableParseBool(s);
+  }
+
+  bool _fetchBasicProfile;
+
   @Input()
   String hostedDomain;
   @Input()
@@ -52,13 +86,14 @@ class GSignin implements AfterViewInit {
 
   _auth2Init() {
     if (clientId == null)
-      throw ('clientId property is necessary (<google-signin clientId="..."></google-signin>).');
+      throw new ClientIdNotFoundError(
+          'clientId property is necessary. (<google-signin clientId="..."></google-signin>)');
 
     load('auth2', allowInterop(() {
       init(new Params(
           client_id: clientId,
           cookie_policy: cookiePolicy,
-          fetch_basic_profile: _nullableParseBool(fetchBasicProfile),
+          fetch_basic_profile: _fetchBasicProfile,
           hosted_domain: hostedDomain,
           openid_realm: openidRealm));
     }));
@@ -76,7 +111,7 @@ class GSignin implements AfterViewInit {
     if (boolString == 'true') return true;
     if (boolString == 'false') return false;
     if (boolString == null) return null;
-    throw ('true, false, or null are expected.');
+    throw new ArgumentError('Only true, false, and null are valid.');
   }
 
   _renderButton() {
@@ -84,9 +119,9 @@ class GSignin implements AfterViewInit {
         id,
         new Options(
             scope: scope,
-            width: width == null ? null : int.parse(width),
-            height: height == null ? null : int.parse(height),
-            longtitle: _nullableParseBool(longTitle),
+            width: _width,
+            height: _height,
+            longtitle: _longTitle,
             theme: theme,
             onsuccess: allowInterop(
                 (GoogleUser googleUser) => _handleSuccess(googleUser)),

@@ -8,7 +8,7 @@ import 'package:ng2_g_signin/ng2_g_signin.dart';
 @Component(
     selector: 'my-app',
     templateUrl: 'app_component.html',
-    directives: const [GSignin])
+    directives: const [GoogleSignin])
 class AppComponent {
   String id;
   String name;
