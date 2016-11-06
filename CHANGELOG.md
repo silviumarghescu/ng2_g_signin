@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.1
+
+- Upgrade angular2 dep to ^2.0.0.
+- Avoid error on gapi.auth2.init with angular2 2.0.0 by adding a prefix.
+
 ## 0.3.0
 - **Breaking** Rename GSignin to GoogleSignin.
 - Change to ChangeDetectionStrategy.OnPush.
