@@ -3,7 +3,7 @@ import 'package:js/js.dart';
 
 import 'events.dart';
 import 'google_signin_js/gapi.dart';
-import 'google_signin_js/gapi/auth2.dart';
+import 'google_signin_js/gapi/auth2.dart' as auth2;
 import 'google_signin_js/gapi/signin2.dart';
 
 class ClientIdNotFoundError extends StateError {
@@ -88,9 +88,9 @@ class GoogleSignin implements AfterViewInit {
     if (clientId == null)
       throw new ClientIdNotFoundError(
           'clientId property is necessary. (<google-signin clientId="..."></google-signin>)');
-
+    
     load('auth2', allowInterop(() {
-      init(new Params(
+      auth2.init(new auth2.Params(
           client_id: clientId,
           cookie_policy: cookiePolicy,
           fetch_basic_profile: _fetchBasicProfile,
@@ -103,7 +103,7 @@ class GoogleSignin implements AfterViewInit {
     googleSignInFailure.add(new GoogleSignInFailure());
   }
 
-  void _handleSuccess(GoogleUser googleUser) {
+  void _handleSuccess(auth2.GoogleUser googleUser) {
     googleSigninSuccess.add(new GoogleSignInSuccess(googleUser));
   }
 
@@ -124,7 +124,7 @@ class GoogleSignin implements AfterViewInit {
             longtitle: _longTitle,
             theme: theme,
             onsuccess: allowInterop(
-                (GoogleUser googleUser) => _handleSuccess(googleUser)),
+                (auth2.GoogleUser googleUser) => _handleSuccess(googleUser)),
             onfailure: allowInterop(() => _handleFailure())));
   }
 }
