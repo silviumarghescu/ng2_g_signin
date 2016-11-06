@@ -1,10 +1,10 @@
 name: ng2_g_signin_site
-description: A working example site of ng2_g_signin.
-version: 0.0.2
+description: A example site of ng2_g_signin.
+version: 0.3.1
 environment:
-  sdk: '>=1.13.0 <2.0.0'
+  sdk: '>=1.19.1 <2.0.0'
 dependencies:
-  angular2: 2.0.0-beta.17
+  angular2: ^2.0.0
   ng2_g_signin:
     path: ../../../ng2_g_signin
   browser: ^0.10.0
